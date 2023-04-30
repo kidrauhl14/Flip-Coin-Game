@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+body{
+    height: 100%;
+    background: linear-gradient(to right, #575ce5 50%, #f9fbfc 50%) fixed;
+}
+
+.container{
+    background: #fff;
+    width: 400px;
+    padding: 50px;
+    position: absolute;
+    /* 부모 요소(parent element)의 중앙에 위치하도록  */
+    transform: translate(-50%, -50%); 
+    top: 50%;
+    left: 50%;
+    box-shadow: 15px 30px 35px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    /* CSS 3D 변환(3D transform)
+    perspective 속성은 3D 변환의 원근(perspective) 효과를 지정합니다. 
+    perspective 속성 값이 클수록 원근 효과가 강해지며, 작을수록 원근 효과가 약해집니다.
+    -webkit-perspective는 Webkit 기반 브라우저(Chrome, Safari 등)에서 사용되는 속성으로, perspective와 동일한 기능을 수행합니다. 
+    Webkit 기반 브라우저에서는 perspective 대신 -webkit-perspective를 사용해야 합니다. */
+    -webkit-perspective: 300px;
+    perspective: 300px;
+}
+
+.stats{
+    text-align: right;
+    color: #101020;
+    font-weight: 500;
+    line-height: 25px;
+}
+
+.coin{
+    height:150px;
+    width: 150px;
+    position: relative;
+    margin: 50px auto;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.tails{
+    transform: rotateX('180deg');
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.coin img{
+    width: 145px;
+}
+
+.heads , .tails{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+button{
+    width: 120px;
+    padding: 10px 0;
+    border: 2.5px solid #424ae0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#flip-button{
+    background-color: #424ae0;
+    color:#fff;
+}
+
+#flip-button:disabled{
+    background-color: #e1e0ee;
+    color:#101020;
+    border-color: #e1e0ee;
+}
+
+#reset-button{
+    background-color: #fff;
+    color:#424ae0;
+}
+
+ /* @keyframes 규칙을 사용하여 애니메이션의 시작점(start point)과 종료점(end point)을 정의하고,*/
+ /*중간의 애니메이션 상태(중간 상태)를 정의할 수 있습니다. */
+ /* 여기서 각각의 @keyframes 규칙은 동전의 앞면과 뒷면을 돌리는 애니메이션을 정의합니다. */
+@keyframes spin-tails{
+    0%{
+        transform: rotateX('0');
+    }
+    100%{
+        transform: rotateX(1980deg);
+    }
+}
+/*spin-heads 규칙은 동전의 앞면을 돌리는 애니메이션을 정의합니다. 
+0%에서는 transform: rotateX(0);을 사용하여 동전의 앞면을 회전하지 않은 상태로 설정합니다. 
+100%에서는 transform: rotateX(2160deg);을 사용하여 동전을 x축을 기준으로 2160도 회전시킵니다.*/
+@keyframes spin-heads {
+    0%{
+        transform: rotateX(0);
+    }
+    100%{
+        transform: rotateX(2160deg);
+    }
+}
